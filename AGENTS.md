@@ -1,6 +1,9 @@
-# AGENTS.md
-
 Critical rules for every agent session in this repository.
+
+## Documents
+
+- `_docs/process.md` - how work is organized
+
 
 ## Commands
 
