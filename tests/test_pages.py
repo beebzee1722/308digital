@@ -185,3 +185,58 @@ class TestHomePage:
         content = response.content.decode()
 
         assert 'href="/contact/"' in content
+
+@pytest.mark.django_db
+class TestServicesPage:
+    """Tests for services page content."""
+
+    def test_services_page_header(self):
+        """Verify services page header is present."""
+        client = Client()
+        response = client.get(reverse('pages:services'))
+        content = response.content.decode()
+        
+        assert 'Our Services' in content
+        assert 'Comprehensive AI and automation solutions' in content
+
+    def test_all_six_services_displayed(self):
+        """Verify all 6 services are displayed on the page."""
+        client = Client()
+        response = client.get(reverse('pages:services'))
+        content = response.content.decode()
+        
+        services = [
+            'AI Strategy & Consulting',
+            'Intelligent Automation',
+            'Data Analytics & Business Intelligence',
+            'Finance & Insurance Solutions',
+            'Custom AI Solutions',
+            'Digital Transformation Services',
+        ]
+        
+        for service in services:
+            assert service in content, f"Service '{service}' not found on page"
+
+    def test_services_have_descriptions(self):
+        """Verify each service has a description."""
+        client = Client()
+        response = client.get(reverse('pages:services'))
+        content_lower = response.content.decode().lower()
+
+        # Check for detailed descriptions
+        assert 'comprehensive ai strategy' in content_lower
+        assert 'intelligent automation' in content_lower
+        assert 'advanced analytics' in content_lower
+        assert 'fraud detection' in content_lower
+        assert 'bespoke ai' in content_lower
+        assert 'digital transformation' in content_lower
+
+    def test_services_page_responsive(self):
+        """Verify services page renders valid HTML."""
+        client = Client()
+        response = client.get(reverse('pages:services'))
+        content = response.content.decode()
+        
+        # Check for responsive grid structure
+        assert 'services-grid' in content
+        assert '<h3>' in content

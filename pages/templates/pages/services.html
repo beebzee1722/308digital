@@ -2,7 +2,103 @@
 
 {% block title %}Services - 308 Digital{% endblock %}
 
+{% block extra_css %}
+<style>
+    .page-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 1rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .service-card {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 2rem;
+        transition: all 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-color: #667eea;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .service-card p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Services</h1>
-<p>Our services will be displayed here. This content will be added in issue #4.</p>
+<div class="page-header">
+    <h1>Our Services</h1>
+    <p>Comprehensive AI and automation solutions for your business</p>
+</div>
+
+<div class="services-grid">
+    <div class="service-card">
+        <h3>AI Strategy & Consulting</h3>
+        <p>Develop a comprehensive AI strategy tailored to your organization's unique challenges and opportunities. Our expert consultants will assess your current capabilities, identify high-impact use cases, and create a roadmap for successful AI adoption aligned with your business objectives.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>Intelligent Automation</h3>
+        <p>Transform your business processes with intelligent automation solutions that combine RPA, AI, and machine learning. Reduce manual work, minimize errors, and improve operational efficiency across your organization while freeing up teams to focus on strategic initiatives.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>Data Analytics & Business Intelligence</h3>
+        <p>Unlock actionable insights from your data with advanced analytics and business intelligence platforms. Build data-driven decision-making capabilities that help you understand market trends, customer behavior, and operational performance in real-time.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>Finance & Insurance Solutions</h3>
+        <p>Industry-specific AI solutions for financial services and insurance organizations. From fraud detection and risk assessment to customer analytics and claims automation, we deliver solutions that drive profitability and compliance in regulated industries.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>Custom AI Solutions</h3>
+        <p>Build bespoke AI applications tailored to your specific business needs. Whether you need predictive models, computer vision systems, or natural language processing solutions, our team develops custom AI solutions that deliver measurable business value.</p>
+    </div>
+
+    <div class="service-card">
+        <h3>Digital Transformation Services</h3>
+        <p>Guide your organization through a complete digital transformation journey. We help you modernize legacy systems, adopt cloud technologies, implement AI capabilities, and create a digital-first culture that drives innovation and competitiveness.</p>
+    </div>
+</div>
 {% endblock %}
