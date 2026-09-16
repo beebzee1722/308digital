@@ -357,3 +357,89 @@ class TestAboutPage:
         # Check sections are present
         assert '<h2>' in content
         assert 'Why Choose 308 Digital' in content
+
+
+@pytest.mark.django_db
+class TestContactPage:
+    """Tests for contact page structure and form."""
+
+    def test_contact_page_has_form(self):
+        """Verify contact page has a form element."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert '<form' in content
+        assert 'id="contact-form"' in content
+
+    def test_contact_form_has_name_field(self):
+        """Verify form has name input field."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'name="name"' in content
+        assert 'type="text"' in content or 'id="name"' in content
+
+    def test_contact_form_has_email_field(self):
+        """Verify form has email input field."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'name="email"' in content
+        assert 'type="email"' in content or 'id="email"' in content
+
+    def test_contact_form_has_message_field(self):
+        """Verify form has message textarea field."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'name="message"' in content
+        assert '<textarea' in content
+
+    def test_contact_form_has_submit_button(self):
+        """Verify form has submit button."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'type="submit"' in content or 'submit' in content.lower()
+
+    def test_contact_page_has_success_placeholder(self):
+        """Verify page has success message placeholder."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'id="success-message"' in content
+        assert 'success-message' in content.lower()
+
+    def test_contact_page_has_error_placeholder(self):
+        """Verify page has error message placeholder."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'id="error-message"' in content
+        assert 'error-message' in content.lower()
+
+    def test_contact_page_has_company_details(self):
+        """Verify page displays company contact details."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert 'contact@308digital.com' in content
+        assert 'Phone' in content or '(555)' in content
+
+    def test_contact_page_structure(self):
+        """Verify contact page renders valid HTML."""
+        client = Client()
+        response = client.get(reverse('pages:contact'))
+        content = response.content.decode()
+        
+        assert '<html' in content
+        assert '<form' in content
+        assert 'Get In Touch' in content
