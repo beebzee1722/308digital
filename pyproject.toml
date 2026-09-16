@@ -7,7 +7,11 @@ authors = [
     { name = "Habeeb Zakariya", email = "beebzee1722-htoyeen@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "django>=6.1.1",
+    "pytest>=9.1.1",
+    "pytest-django>=4.14.0",
+]
 
 [project.scripts]
 308digital = "308digital:main"
