@@ -240,3 +240,57 @@ class TestServicesPage:
         # Check for responsive grid structure
         assert 'services-grid' in content
         assert '<h3>' in content
+
+
+@pytest.mark.django_db
+class TestIndustriesPage:
+    """Tests for industries page content."""
+
+    def test_industries_page_header(self):
+        """Verify industries page header is present."""
+        client = Client()
+        response = client.get(reverse('pages:industries'))
+        content = response.content.decode()
+        
+        assert 'Industries We Serve' in content
+        assert 'AI solutions tailored' in content
+
+    def test_all_five_industries_displayed(self):
+        """Verify all 5 industries are displayed on the page."""
+        client = Client()
+        response = client.get(reverse('pages:industries'))
+        content = response.content.decode()
+        
+        industries = [
+            'Financial Services',
+            'Insurance',
+            'Healthcare',
+            'Retail & E-commerce',
+            'Public Sector & Enterprise',
+        ]
+        
+        for industry in industries:
+            assert industry in content, f"Industry '{industry}' not found on page"
+
+    def test_industries_have_descriptions(self):
+        """Verify each industry has a description."""
+        client = Client()
+        response = client.get(reverse('pages:industries'))
+        content_lower = response.content.decode().lower()
+        
+        # Check for industry-specific descriptions
+        assert 'financial' in content_lower
+        assert 'insurance' in content_lower
+        assert 'healthcare' in content_lower
+        assert 'retail' in content_lower or 'e-commerce' in content_lower
+        assert 'public sector' in content_lower or 'enterprise' in content_lower
+
+    def test_industries_page_responsive(self):
+        """Verify industries page renders valid HTML."""
+        client = Client()
+        response = client.get(reverse('pages:industries'))
+        content = response.content.decode()
+        
+        # Check for responsive grid structure
+        assert 'industries-grid' in content
+        assert '<h3>' in content

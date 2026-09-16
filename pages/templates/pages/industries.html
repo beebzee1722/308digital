@@ -2,7 +2,98 @@
 
 {% block title %}Industries - 308 Digital{% endblock %}
 
+{% block extra_css %}
+<style>
+    .page-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 1rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .industries-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .industry-card {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 2rem;
+        transition: all 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .industry-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-color: #667eea;
+    }
+
+    .industry-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .industry-card p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Industries</h1>
-<p>Our target industries will be displayed here. This content will be added in issue #5.</p>
+<div class="page-header">
+    <h1>Industries We Serve</h1>
+    <p>AI solutions tailored to your industry's unique challenges and opportunities</p>
+</div>
+
+<div class="industries-grid">
+    <div class="industry-card">
+        <h3>Financial Services</h3>
+        <p>We partner with banks, investment firms, and fintech companies to deploy AI solutions that enhance customer experience, optimize trading strategies, detect fraud in real-time, and automate compliance reporting. Our expertise in financial data ensures regulatory compliance while maximizing ROI.</p>
+    </div>
+
+    <div class="industry-card">
+        <h3>Insurance</h3>
+        <p>Transform insurance operations with AI-driven risk assessment, claims automation, and customer analytics. From underwriting optimization to fraud detection and personalized policy recommendations, we help insurers reduce costs, improve customer retention, and accelerate growth.</p>
+    </div>
+
+    <div class="industry-card">
+        <h3>Healthcare</h3>
+        <p>Improve patient outcomes and operational efficiency with AI solutions for healthcare organizations. Our capabilities include diagnostic support, patient data analytics, hospital operations optimization, and predictive health analytics. We ensure HIPAA compliance and data security throughout.</p>
+    </div>
+
+    <div class="industry-card">
+        <h3>Retail & E-commerce</h3>
+        <p>Drive sales and customer engagement with AI-powered personalization, demand forecasting, and supply chain optimization. We help retailers and e-commerce companies implement AI-driven recommendation engines, dynamic pricing, inventory management, and customer service automation.</p>
+    </div>
+
+    <div class="industry-card">
+        <h3>Public Sector & Enterprise</h3>
+        <p>We help government agencies and large enterprises modernize operations through intelligent automation, data analytics, and digital transformation. From citizen services improvement to internal process automation, we deliver secure, scalable solutions that meet stringent regulatory requirements.</p>
+    </div>
+</div>
 {% endblock %}
