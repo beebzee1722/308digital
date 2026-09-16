@@ -294,3 +294,66 @@ class TestIndustriesPage:
         # Check for responsive grid structure
         assert 'industries-grid' in content
         assert '<h3>' in content
+
+
+@pytest.mark.django_db
+class TestAboutPage:
+    """Tests for about page content."""
+
+    def test_about_page_has_mission(self):
+        """Verify mission statement section is present."""
+        client = Client()
+        response = client.get(reverse('pages:about'))
+        content = response.content.decode()
+        
+        assert 'Our Mission' in content
+        assert 'empower organizations' in content.lower()
+
+    def test_about_page_has_vision(self):
+        """Verify vision statement section is present."""
+        client = Client()
+        response = client.get(reverse('pages:about'))
+        content = response.content.decode()
+        
+        assert 'Our Vision' in content
+        assert 'trusted leader' in content.lower()
+
+    def test_about_page_has_all_five_value_props(self):
+        """Verify all 5 value propositions are displayed."""
+        client = Client()
+        response = client.get(reverse('pages:about'))
+        content = response.content.decode()
+        
+        value_props = [
+            'Expertise in AI & Automation',
+            'Proven Track Record',
+            'Custom Solutions',
+            'End-to-End Support',
+            'Ongoing Partnership',
+        ]
+        
+        for prop in value_props:
+            assert prop in content, f"Value prop '{prop}' not found on page"
+
+    def test_value_props_have_descriptions(self):
+        """Verify each value proposition has a description."""
+        client = Client()
+        response = client.get(reverse('pages:about'))
+        content_lower = response.content.decode().lower()
+        
+        # Check for key descriptive phrases
+        assert 'deep knowledge' in content_lower
+        assert 'enterprise clients' in content_lower
+        assert 'tailor' in content_lower
+        assert 'strategy' in content_lower
+        assert 'partnership' in content_lower
+
+    def test_about_page_structure(self):
+        """Verify about page has proper structure."""
+        client = Client()
+        response = client.get(reverse('pages:about'))
+        content = response.content.decode()
+        
+        # Check sections are present
+        assert '<h2>' in content
+        assert 'Why Choose 308 Digital' in content

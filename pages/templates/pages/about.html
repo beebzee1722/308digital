@@ -2,7 +2,142 @@
 
 {% block title %}About - 308 Digital{% endblock %}
 
+{% block extra_css %}
+<style>
+    .page-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 1rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .statement-section {
+        background: white;
+        border-left: 4px solid #667eea;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .statement-section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .statement-section p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .value-props-section {
+        margin-top: 3rem;
+    }
+
+    .value-props-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .value-props-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .value-prop {
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        padding: 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+
+    .value-prop:hover {
+        background: white;
+        border-color: #667eea;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .value-prop h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        color: #667eea;
+    }
+
+    .value-prop p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2rem;
+        }
+
+        .statement-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .value-props-section h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>About Us</h1>
-<p>Company information will be displayed here. This content will be added in issue #6.</p>
+<div class="page-header">
+    <h1>About 308 Digital</h1>
+</div>
+
+<div class="statement-section">
+    <h2>Our Mission</h2>
+    <p>To empower organizations across industries with transformative AI and automation solutions that drive growth, efficiency, and competitive advantage. We partner with our clients as strategic advisors, delivering end-to-end expertise from strategy and implementation to ongoing optimization and support.</p>
+</div>
+
+<div class="statement-section">
+    <h2>Our Vision</h2>
+    <p>To be the trusted leader in enterprise AI consulting, known for delivering measurable business value through innovative solutions, deep industry expertise, and unwavering commitment to our clients' success. We envision a future where intelligent automation and AI-driven insights are seamlessly integrated into every organization's operations.</p>
+</div>
+
+<div class="value-props-section">
+    <h2>Why Choose 308 Digital?</h2>
+    <div class="value-props-grid">
+        <div class="value-prop">
+            <h3>Expertise in AI & Automation</h3>
+            <p>Deep knowledge across multiple industries and use cases, from strategy and consulting to implementation and optimization. Our team brings years of experience delivering successful AI and automation projects.</p>
+        </div>
+
+        <div class="value-prop">
+            <h3>Proven Track Record</h3>
+            <p>Trusted by enterprise clients across finance, insurance, healthcare, retail, and public sector. Our proven methodologies and successful implementations demonstrate our ability to deliver results in complex, regulated environments.</p>
+        </div>
+
+        <div class="value-prop">
+            <h3>Custom Solutions</h3>
+            <p>We don't believe in one-size-fits-all approaches. Every solution is tailored to your specific business needs, industry challenges, and organizational capabilities. We take time to understand your unique requirements before designing solutions.</p>
+        </div>
+
+        <div class="value-prop">
+            <h3>End-to-End Support</h3>
+            <p>From initial strategy and assessment through design, implementation, deployment, and ongoing optimization. We provide comprehensive support at every stage of your AI transformation journey, ensuring successful adoption and ROI.</p>
+        </div>
+
+        <div class="value-prop">
+            <h3>Ongoing Partnership</h3>
+            <p>We view our relationship as a long-term partnership. We remain engaged after deployment, providing continuous improvement, monitoring performance, identifying new opportunities, and evolving solutions as your business needs change.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
