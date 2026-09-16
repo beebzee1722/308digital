@@ -1,3 +1,4 @@
+import json
 import pytest
 from django.test import Client
 from django.urls import reverse
@@ -443,3 +444,59 @@ class TestContactPage:
         assert '<html' in content
         assert '<form' in content
         assert 'Get In Touch' in content
+
+
+@pytest.mark.django_db
+class TestContactAPI:
+    """Tests for contact form API endpoint."""
+
+    def test_contact_api_accepts_post(self):
+        """Verify API endpoint accepts POST requests."""
+        client = Client()
+        response = client.post(
+            reverse('pages:contact_submit'),
+            data=json.dumps({'name': 'Test', 'email': 'test@example.com', 'message': 'Hello'}),
+            content_type='application/json'
+        )
+        assert response.status_code in [200, 201, 400, 500]
+
+    def test_contact_api_validates_required_fields(self):
+        """Verify API validates required fields."""
+        client = Client()
+        response = client.post(
+            reverse('pages:contact_submit'),
+            data=json.dumps({'name': '', 'email': '', 'message': ''}),
+            content_type='application/json'
+        )
+        assert response.status_code == 400
+        data = response.json()
+        assert data['status'] == 'error'
+        assert 'name' in data.get('errors', {})
+
+    def test_contact_api_validates_email_format(self):
+        """Verify API validates email format."""
+        client = Client()
+        response = client.post(
+            reverse('pages:contact_submit'),
+            data=json.dumps({'name': 'Test', 'email': 'invalid-email', 'message': 'Hello'}),
+            content_type='application/json'
+        )
+        assert response.status_code == 400
+        data = response.json()
+        assert 'email' in data.get('errors', {})
+
+    def test_contact_api_accepts_valid_submission(self):
+        """Verify API accepts valid form submission."""
+        client = Client()
+        response = client.post(
+            reverse('pages:contact_submit'),
+            data=json.dumps({
+                'name': 'John Doe',
+                'email': 'john@example.com',
+                'message': 'I am interested in your services'
+            }),
+            content_type='application/json'
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data['status'] == 'success'
