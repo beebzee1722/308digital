@@ -99,3 +99,89 @@ class TestBaseTemplate:
         for url in urls:
             response = client.get(url)
             assert response.status_code == 200
+
+
+@pytest.mark.django_db
+class TestHomePage:
+    """Tests for home page content and sections."""
+
+    def test_home_page_hero_section(self):
+        """Verify hero section renders with headline and subheading."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'Transform Your Business with AI' in content
+        assert 'Enterprise-grade AI solutions' in content
+
+    def test_home_page_services_teaser(self):
+        """Verify 'What we do' section shows 3 services."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'What We Do' in content
+        assert 'AI Strategy & Consulting' in content
+        assert 'Intelligent Automation' in content
+        assert 'Data Analytics & Business Intelligence' in content
+        # Count that service teasers link to services page
+        assert content.count('href="/services/"') >= 3
+
+    def test_home_page_industries_teaser(self):
+        """Verify industries teaser section is present."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'Industries We Serve' in content
+        assert 'Financial Services' in content
+        assert 'Insurance' in content
+        assert 'Healthcare' in content
+        assert 'href="/industries/"' in content
+
+    def test_home_page_why_choose_us(self):
+        """Verify why-choose-us section displays value propositions."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'Why Choose 308 Digital' in content
+        assert 'Expertise in AI & Automation' in content
+        assert 'Proven Track Record' in content
+        assert 'Custom Solutions' in content
+        assert 'End-to-End Support' in content
+        assert 'Ongoing Partnership' in content
+
+    def test_home_page_closing_cta(self):
+        """Verify closing CTA section is present."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'Ready to Transform Your Business' in content
+        assert 'Get in Touch' in content
+        assert 'href="/contact/"' in content
+
+    def test_home_page_links_to_services(self):
+        """Verify home page links to services page."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'href="/services/"' in content
+
+    def test_home_page_links_to_industries(self):
+        """Verify home page links to industries page."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'href="/industries/"' in content
+
+    def test_home_page_links_to_contact(self):
+        """Verify home page links to contact page."""
+        client = Client()
+        response = client.get(reverse('pages:home'))
+        content = response.content.decode()
+
+        assert 'href="/contact/"' in content

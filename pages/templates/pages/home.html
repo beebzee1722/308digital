@@ -2,7 +2,219 @@
 
 {% block title %}Home - 308 Digital{% endblock %}
 
+{% block extra_css %}
+<style>
+    .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 6rem 1rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+    }
+
+    .section {
+        margin: 4rem 0;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .card {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .card a {
+        display: inline-block;
+        margin-top: 1rem;
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .card a:hover {
+        color: #0052a3;
+    }
+
+    .highlights {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+    .highlights ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .highlights li {
+        padding: 1rem;
+        background: white;
+        border-left: 4px solid #667eea;
+        border-radius: 4px;
+    }
+
+    .cta {
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+    }
+
+    .cta h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .cta a {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.75rem 2rem;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .cta a:hover {
+        background: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Home</h1>
-<p>Welcome to 308 Digital. This content will be added in issue #3.</p>
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Transform Your Business with AI</h1>
+    <p>Enterprise-grade AI solutions for finance, insurance, healthcare, retail, and public sector</p>
+</section>
+
+<!-- What We Do Section -->
+<section class="section">
+    <h2>What We Do</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <h3>AI Strategy & Consulting</h3>
+            <p>Develop a comprehensive AI strategy tailored to your business goals and industry challenges.</p>
+            <a href="{% url 'pages:services' %}">Learn more →</a>
+        </div>
+        <div class="card">
+            <h3>Intelligent Automation</h3>
+            <p>Streamline operations with automated workflows that reduce costs and improve efficiency.</p>
+            <a href="{% url 'pages:services' %}">Learn more →</a>
+        </div>
+        <div class="card">
+            <h3>Data Analytics & Business Intelligence</h3>
+            <p>Unlock insights from your data with advanced analytics and business intelligence solutions.</p>
+            <a href="{% url 'pages:services' %}">Learn more →</a>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <a href="{% url 'pages:services' %}" style="font-size: 1.1rem; color: #0066cc; text-decoration: none; font-weight: 600;">View all services →</a>
+    </div>
+</section>
+
+<!-- Industries Section -->
+<section class="section">
+    <h2>Industries We Serve</h2>
+    <div class="cards-grid">
+        <div class="card">
+            <h3>Financial Services</h3>
+            <p>AI solutions for banking, investment, and fintech companies</p>
+        </div>
+        <div class="card">
+            <h3>Insurance</h3>
+            <p>Risk analysis and claims processing optimization</p>
+        </div>
+        <div class="card">
+            <h3>Healthcare</h3>
+            <p>Patient data analytics and operational efficiency</p>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <a href="{% url 'pages:industries' %}" style="font-size: 1.1rem; color: #0066cc; text-decoration: none; font-weight: 600;">View all industries →</a>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section">
+    <h2>Why Choose 308 Digital?</h2>
+    <div class="highlights">
+        <ul>
+            <li><strong>Expertise in AI & Automation</strong> across multiple industries and use cases</li>
+            <li><strong>Proven Track Record</strong> with enterprise clients and successful implementations</li>
+            <li><strong>Custom Solutions</strong> tailored to your specific business needs</li>
+            <li><strong>End-to-End Support</strong> from strategy through deployment and optimization</li>
+            <li><strong>Ongoing Partnership</strong> for continuous improvement and innovation</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Closing CTA Section -->
+<section class="cta">
+    <h2>Ready to Transform Your Business?</h2>
+    <p>Let's discuss how AI can drive growth and efficiency for your organization.</p>
+    <a href="{% url 'pages:contact' %}">Get in Touch</a>
+</section>
 {% endblock %}
