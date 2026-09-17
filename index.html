@@ -107,7 +107,8 @@
     font-size:14.5px; color:var(--on-dark-soft); font-weight:500;
     transition:color .15s ease;
   }
-  nav.links a:hover{color:var(--on-dark);}
+  nav.links a:hover{color:#FE4C01;}
+  nav.links a.active{color:#FE6A01;}
   .nav-cta{
     background:var(--orange); color:#fff !important;
     padding:9px 18px; border-radius:6px; font-size:14px; font-weight:600;
@@ -325,7 +326,8 @@
   .foot-tagline{ font-size:14px; }
   footer .contact-links{ display:flex; gap:26px; flex-wrap:wrap; }
   footer .contact-links a{ font-size:14px; color:var(--on-dark-soft); }
-  footer .contact-links a:hover{ color:var(--on-dark); }
+  footer .contact-links a:hover{ color:#FE4C01; }
+  footer .contact-links a.active{ color:#FE6A01; }
   .foot-bottom{
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     padding-top:24px; font-size:13px; color:var(--slate-light);
@@ -555,6 +557,38 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+  function updateActiveMenu() {
+    const navLinks = document.querySelectorAll('nav.links a, footer .contact-links a');
+    const sections = document.querySelectorAll('section[id]');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 200) {
+        currentSection = section.id;
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      if (href === '#' + currentSection || (href === '#contact' && currentSection === 'contact')) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveMenu);
+  window.addEventListener('load', updateActiveMenu);
+  document.querySelectorAll('nav.links a, footer .contact-links a').forEach(link => {
+    link.addEventListener('click', () => setTimeout(updateActiveMenu, 100));
+  });
+</script>
+
 
 </body>
 </html>
