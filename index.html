@@ -123,9 +123,16 @@
   }
 
   /* ---------- hero ---------- */
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
   .hero{
     position:relative;
-    background:linear-gradient(155deg, #1A1D22 0%, #23272D 55%, #262a24 100%);
+    background:linear-gradient(-45deg, #1A1D22 0%, #23272D 25%, #2a1f1f 50%, #23272D 75%, #1A1D22 100%);
+    background-size:200% 200%;
+    animation:gradientFlow 15s ease infinite;
     color:var(--on-dark);
     padding:110px 0 130px;
     overflow:hidden;
