@@ -68,7 +68,7 @@ def contact_submit(request):
                 subject,
                 body,
                 email,
-                ['contact@308digital.com'],
+                ['info@308digital.co.uk'],
                 fail_silently=False,
             )
         except Exception as e:
