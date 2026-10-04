@@ -17,9 +17,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-change-this-in
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'database_name'),
-        'USER': os.environ.get('DB_USER', 'database_user'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'database_password'),
+        'NAME': os.environ.get('DB_NAME', '308_digita'),
+        'USER': os.environ.get('DB_USER', 'admin_308'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'diGit@l@308_bankSolut!0n'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': os.environ.get('DB_PORT', '3306'),
     }

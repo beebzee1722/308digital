@@ -10,12 +10,12 @@ This is a condensed version. See `DEPLOYMENT_GODADDY.md` for detailed instructio
 
 ---
 
-## Step 1: Create Database
-In cPanel → Databases → MySQL:
-- Database: `308digital_db`
-- User: `308digital_user`
-- Password: `[choose strong password]`
-- Host: `localhost`
+## Step 1: Database Created ✅
+Already done! Your database details:
+- **Database**: `308_digita`
+- **User**: `admin_308`
+- **Password**: `diGit@l@308_bankSolut!0n`
+- **Host**: `localhost`
 
 ---
 
@@ -35,11 +35,8 @@ SSH into server:
 ssh e1zcw712avko@92.205.174.198
 cd ~/public_html/mysite
 
-# Copy environment template
-cp .env.example .env
-
-# Edit .env with your database credentials
-nano .env
+# Copy the production environment file
+cp .env.production .env
 
 # Run deployment script
 bash deploy.sh
