@@ -5,9 +5,10 @@ import os
 import sys
 from pathlib import Path
 
-# Load environment variables from .env file
+# Load environment variables from .env file with absolute path
 from dotenv import load_dotenv
-load_dotenv()
+env_file = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(env_file)
 
 # Add user site-packages to path for installed packages
 user_site = os.path.expanduser("~/.local/lib/python3.11/site-packages")
