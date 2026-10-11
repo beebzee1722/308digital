@@ -25,7 +25,8 @@
 
 ### 2. GoDaddy Account Setup
 - ✅ Verified GoDaddy hosting details:
-  - Domain: `28h.524.mytemp.website`
+  - Domain: `308digital.co.uk` (primary domain)
+  - Temporary Domain: `28h.524.mytemp.website`
   - cPanel Username: `e1zcw712avko`
   - Server IP: `92.205.174.198`
   - Python 3.11.16 available via cPanel
@@ -75,7 +76,11 @@
 
 ---
 
-## 🔴 Current Status: BLOCKED
+## 🔴 Current Status: DOMAIN UPDATED
+
+### Domain Configuration Updated
+**Status**: ✅ Domain `308digital.co.uk` now configured  
+**Next Step**: Resolve Passenger WSGI server startup issue
 
 ### Passenger WSGI Server Startup Error (Persistent)
 **Status**: ❌ Blocking - Site not yet accessible  
@@ -339,7 +344,8 @@ If staying with GoDaddy:
 
 - **GoDaddy cPanel**: `https://92.205.174.198:2083/`
 - **GitHub Repo**: `https://github.com/beebzee1722/308digital`
-- **Live URL**: `http://28h.524.mytemp.website` (currently erroring)
+- **Live URL**: `http://308digital.co.uk` (currently erroring due to Passenger)
+- **Temporary URL**: `http://28h.524.mytemp.website` (fallback)
 
 ---
 
@@ -384,6 +390,7 @@ Would eliminate this issue immediately and provide a better development experien
 
 ---
 
-**Last Updated**: October 4, 2026, 11:40 PM  
-**Status**: Application ready, awaiting hosting decision  
+**Last Updated**: October 11, 2026  
+**Domain Status**: ✅ 308digital.co.uk configured  
+**Application Status**: Application ready, awaiting Passenger fix  
 **Estimated time to resolution**: 30 minutes (with new host) or 1-2 hours (if GoDaddy escalation helps)

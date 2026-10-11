@@ -8,7 +8,7 @@ import os
 
 # Production security settings
 DEBUG = False
-ALLOWED_HOSTS = ['28h.524.mytemp.website', '*.308digital.com']  # Update with your actual domain
+ALLOWED_HOSTS = ['308digital.co.uk', 'www.308digital.co.uk']
 
 # Secret key from environment variable (MUST be set in cPanel)
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-change-this-in-production')
