@@ -34,9 +34,9 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'public_html', 'media')
 MEDIA_URL = '/media/'
 
 # Security settings for production
-SECURE_SSL_REDIRECT = False  # Set to True when you have HTTPS certificate
-SESSION_COOKIE_SECURE = False  # Set to True with HTTPS
-CSRF_COOKIE_SECURE = False  # Set to True with HTTPS
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_SECURITY_POLICY = {
     "default-src": ("'self'",),
